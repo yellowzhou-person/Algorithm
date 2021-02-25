@@ -10,10 +10,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSArray *arr = @[@4,@2,@7,@1,@3,@6,@9];
+    NSArray *arr = @[@4,@2,@7,@1,@3,@6,@9,@45,@12,@8];
     BinaryTreeNode *node = [BinaryTree createTreeWithValues:arr];
-    NSInteger  i = [BinaryTree depathOfTree:node];
-    NSLog(@"%ld",i);
+    NSInteger i = [BinaryTree depathOfTree:node];
+    NSLog(@"初始化：%@",[arr componentsJoinedByString:@","]);
+    NSLog(@"树深度：%ld",i);
+    
+    NSMutableArray *data = [NSMutableArray new];
+    [BinaryTree treeFirstInformationWithNode:node resultBlock:^(NSInteger value) {
+        [data addObject:@(value)];
+    }];
+    NSLog(@"前序：%@",[data componentsJoinedByString:@","]);
+    
+    [data removeAllObjects];
+    [BinaryTree treeMiddleInformationWithNode:node resultBlock:^(NSInteger value) {
+        [data addObject:@(value)];
+    }];
+    NSLog(@"中序：%@",[data componentsJoinedByString:@","]);
+    
+    [data removeAllObjects];
+    [BinaryTree treeLastInformationWithNode:node resultBlock:^(NSInteger value) {
+        [data addObject:@(value)];
+    }];
+    NSLog(@"后序：%@",[data componentsJoinedByString:@","]);
     return YES;
 }
 

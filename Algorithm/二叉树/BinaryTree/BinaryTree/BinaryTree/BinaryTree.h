@@ -44,4 +44,7 @@
 /// 后序遍历
 //http://baike.baidu.com/link?url=jbHRJx477WlWPGA52RhiY3yo2HTjE087QFDNrV7E9dyhES7ftDZ3SdcJZFL4dv4UuXDelpdgdqysjE5y02aICa
 + (void)treeLastInformationWithNode:(BinaryTreeNode *)rootNode resultBlock:(void (^)(NSInteger value))block;
+
+
+
 @end
